@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/level.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <script type="text/javascript" src="cordova-2.3.0.js"></script>
+        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="js/storage/storage.js"></script>
+        <script type="text/javascript" src="js/touchwipe.js"></script>
+        <script type="text/javascript" src="js/hashParams.js"></script>
+
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/level.js"></script>
+
+        <script type="text/javascript">
+            app.initialize();
+            var level = new PG.Level(parseInt(PG.Utils.getHashParams().level));
+        </script>
+        
+        <h1>Level</h1>
+
+
+        <div id="flashCardsNav">
+            <a href="javascript:level.back()">Back</a>
+            <a href="javascript:level.playCurrentAudio()">Play</a>
+            <a href="javascript:level.next()">Next</a>
+        </div>
+
+        <ul id="steps">
+            <li class="level-step">
+                <div class="target"></div>
+                <div class="image"><img /></div>
+                <div class="native"></div>
+            </li>
+        </ul>
+        
+        <div id="tabs">
+            <a href="index.html">Back to home</a>
+        </div>
+
+    </body>
+</html>

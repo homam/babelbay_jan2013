@@ -1,0 +1,50 @@
+﻿@import "_common.less";
+
+#levels {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+        float: none;
+    }
+
+    li {
+        padding: 0;
+        margin: 0em .2em .2em .2em;
+        list-style: none;
+        display: inline-block;
+        width: 140px;
+        height: 100px;
+        background-color: rgb(202, 202, 206);
+        text-align: center;
+        position: relative;
+        background-position:center 20px;
+        background-size:contain;
+        background-repeat: no-repeat;
+		text-transform:uppercase;
+
+        a {
+            text-decoration: none;
+        }
+
+        >.container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            border: solid 1px gray;
+
+            .name {
+                display: block;
+                background-color: black;
+                color: white;
+				padding: .5ex 0 .5ex 0;
+            }
+        }
+    }
+}
