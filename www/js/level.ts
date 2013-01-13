@@ -1,5 +1,6 @@
-﻿/// <reference path="jquery-1.8.d.ts" />
-/// <reference path="touchwipe.ts" />
+﻿/// <reference path="lib/jquery-1.8.d.ts" />
+/// <reference path="lib/touchwipe.ts" />
+/// <reference path="app.ts" />
 
 module PG {
     export class Level {
@@ -14,24 +15,18 @@ module PG {
 
             $.get("data/" + levelNumber + ".js", null, null, 'text').done(function (levelStr) {
                 var level = JSON.parse(levelStr);
-                $("h1").text(level.name.en.Native);
+                $("h1").text(level.name[app.nativeLang].Native);
                 var ul = $("#steps");
                 var template = $("#steps li.level-step").remove();
                 level.words.forEach(function (word) {
                     var li = template.clone();
-                    li.find(".target").text(word.translations.ar.Target);
+                    li.find(".target").text(word.translations[app.targetLang].Target);
                     li.find(".image img").attr("src", "http://m.babelbay.com/LevelsMedia/Set" + levelNumber + "/" + (word.id) + ".jpg");
-                    li.find(".native").text(word.translations.en.Native);
+                    li.find(".native").text(word.translations[app.nativeLang].Native);
                     
                     var audio = new Audio('http://m.babelbay.com/services/tts.ashx?lang=ar&level=' + levelNumber + '&id=' + word.id );
                     audio.preload = 'auto';
-                    //li.append(audio);
                     li[0]['audio'] = audio;
-                    
-                    //li.append($('<audio id="audio-' + word.id + '" src="http://m.babelbay.com/services/tts.ashx?lang=ar&level=' + levelNumber + '&id=' + word.id + '" preload="auto"></audio>'));
-                    //li.find("audio")[0].addEventListener('canplay', function () {
-                    //    $("h1").text(this['src'].split('?')[1].split('=')[3]);
-                    //});
                     
                     ul.append(li);
                 });

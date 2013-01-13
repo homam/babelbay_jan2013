@@ -105,6 +105,8 @@
 {
     // Black base color for background matches the native apps
     theWebView.backgroundColor = [UIColor blackColor];
+    
+    [[theWebView.subviews objectAtIndex:0] setBounces:NO]; //stop bounce effect
 
     return [super webViewDidFinishLoad:theWebView];
 }

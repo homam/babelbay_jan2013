@@ -1,4 +1,5 @@
-﻿/// <reference path="lib/jquery-1.8.d.ts" />
+﻿/// <reference path="page.ts" />
+/// <reference path="lib/jquery-1.8.d.ts" />
 
 var app = {
     // Application Constructor
@@ -27,12 +28,38 @@ var app = {
 
     load: function (scripts: string[] = []): JQueryDeferred {
         var def = $.Deferred();
-         $.when(['cordova-2.3.0.js', 'js/lib/storage/storage.js', 'js/lib/_.js',
-              'js/lib/touchwipe.js', 'js/lib/hashParams.js']
+         $.when.apply(null,['cordova-2.3.0.js', 'js/lib/storage/storage.js', 'js/lib/_.js',
+              'js/lib/touchwipe.js', 'js/lib/hashParams.js', 'js/Page.js']
             .map(file => $.getScript(file)))
-                .done(() => $.when(scripts.map(f => $.getScript(f)))
-                    .done(()=>def.resolve()));
+                .done(() => {
+                    if (scripts.length == 0) {
+                        $.getScript(scripts[0]).done(def.resolve);
+                    } else {
+                        $.when.apply(null,
+                            scripts.map(f => $.getScript(f)))
+                            .done(def.resolve)
+                    }
+                });
+
          return def;
-    }
+    },
+
+    targetLang: localStorage.getItem("targetLang"),
+	nativeLang: localStorage.getItem("nativeLang"),
+
+	render: function (page: string): JQueryDeferred {
+	    var def = $.Deferred();
+	    app.load(['js/' + page + '.js']).done(() =>
+	        new PG[page]().render()
+                .done(def.resolve)
+	    );
+	    return def;
+	}
+
 };
 
+
+var switchPage = function (url) {
+    $("body").removeClass("loaded");
+    location.href = url;
+}

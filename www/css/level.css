@@ -25,6 +25,11 @@ body {
   margin: 0px;
   padding: 0px;
   width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity ease-in-out 1s;
+}
+body.loaded {
+  opacity: 1;
 }
 @keyframes fade {
   from {

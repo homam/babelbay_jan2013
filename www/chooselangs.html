@@ -4,17 +4,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="format-detection" content="telephone=no" />
 		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
-		<title>Hello World</title>
+		<link rel="stylesheet" type="text/css" href="css/chooselangs.css" />
+		<title>Choose the language you want to learn</title>
 		
-		<script>
-		    var targetLang = localStorage.getItem("targetLang");
-			var nativeLang = localStorage.getItem("nativeLang");
-
-			if (!targetLang || !nativeLang) {
-			    location.href = 'chooselangs.html';
-			}
-		</script>
 	</head>
 	<body>
 		
@@ -22,20 +14,20 @@
 		<script type="text/javascript" src="js/app.js"></script>
 
 		<script type="text/javascript">
-		    //app.load(['js/index.js']);
-            app.render('IndexPage')
+			//app.load(['js/chooselangs.js']);
+			app.render('ChooseLangsPage')
 		</script>
 		
-
-		<ul id="levels">
-			<li>
-				<a class="container" href="level.html">
-					<span class="name"></span>
-				</a>
-			</li>
-		</ul>
-
-		<div id="runs"></div>
+		<div class="view chooseNativeLang-view">
+			<ul id="nativeLangs">
+				<li class="template"><a href=""></a></li>
+			</ul>
+		</div>
+		<div class="view chooseTargetLang-view">
+			<ul id="targetLangs">
+				<li class="template"><a href=""></a></li>
+			</ul>
+		</div>
 		
 	</body>
 </html>
