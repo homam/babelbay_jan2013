@@ -1,24 +1,34 @@
 var app = {
-    initialize: // Application Constructor
-    function () {
+    initialize: function () {
         this.bindEvents();
     },
-    bindEvents: // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    function () {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    onDeviceReady: // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    function () {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
-    receivedEvent: // Update DOM on a Received Event
-    function (id) {
+    receivedEvent: function (id) {
         console.log('Received Event: ' + id);
+    },
+    load: function (scripts) {
+        if (typeof scripts === "undefined") { scripts = []; }
+        var def = $.Deferred();
+        $.when([
+            'cordova-2.3.0.js', 
+            'js/lib/storage/storage.js', 
+            'js/lib/_.js', 
+            'js/lib/touchwipe.js', 
+            'js/lib/hashParams.js'
+        ].map(function (file) {
+            return $.getScript(file);
+        })).done(function () {
+            return $.when(scripts.map(function (f) {
+                return $.getScript(f);
+            })).done(function () {
+                return def.resolve();
+            });
+        });
+        return def;
     }
 };

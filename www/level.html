@@ -8,18 +8,13 @@
         <title>Hello World</title>
     </head>
     <body>
-        <script type="text/javascript" src="cordova-2.3.0.js"></script>
-        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="js/storage/storage.js"></script>
-        <script type="text/javascript" src="js/touchwipe.js"></script>
-        <script type="text/javascript" src="js/hashParams.js"></script>
-
+        <script type="text/javascript" src="js/lib/jquery-1.8.3.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/level.js"></script>
 
         <script type="text/javascript">
-            app.initialize();
-            var level = new PG.Level(parseInt(PG.Utils.getHashParams().level));
+            app.load(['js/level.js']).done(function () {
+                var level = new PG.Level(parseInt(PG.Utils.getHashParams().level));
+            });
         </script>
         
         <h1>Level</h1>

@@ -1,5 +1,5 @@
-/// <reference path="jquery-1.8.d.ts" />
-/// <reference path="storage/storage.ts" />
+/// <reference path="lib/jquery-1.8.d.ts" />
+/// <reference path="lib/storage/storage.ts" />
 
 $(function () {
     var ls = new PG.Storage('runs');
@@ -25,7 +25,6 @@ $(function () {
             li.find(".name").text(level.name.en.Native);
             li.find("a").attr("href", "level.html#level=" + level.number);
             ul.append(li);
-            console.log(li, ul);
         });
 
     });
