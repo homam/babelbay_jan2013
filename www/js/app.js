@@ -1,26 +1,14 @@
-/// <reference path="page.ts" />
-/// <reference path="lib/jquery-1.8.d.ts" />
 var app = {
-    initialize: // Application Constructor
-    function () {
+    initialize: function () {
         this.bindEvents();
     },
-    bindEvents: // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    function () {
+    bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    onDeviceReady: // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    function () {
+    onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
-    receivedEvent: // Update DOM on a Received Event
-    function (id) {
+    receivedEvent: function (id) {
         console.log('Received Event: ' + id);
     },
     load: function (scripts) {

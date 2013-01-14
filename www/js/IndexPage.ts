@@ -8,7 +8,6 @@ module PG {
         _render = function (): JQueryDeferred {
             var renderLevels = function (levelsStr) {
                 var levels = JSON.parse(levelsStr);
-                $("h1").html(levels[0].name)
                 var ul = $("#levels");
                 var template = ul.find("li").remove();
 

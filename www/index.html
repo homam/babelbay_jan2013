@@ -8,11 +8,11 @@
 		<title>Hello World</title>
 		
 		<script>
-		    var targetLang = localStorage.getItem("targetLang");
+			var targetLang = localStorage.getItem("targetLang");
 			var nativeLang = localStorage.getItem("nativeLang");
 
 			if (!targetLang || !nativeLang) {
-			    location.href = 'chooselangs.html';
+				location.href = 'chooselangs.html';
 			}
 		</script>
 	</head>
@@ -22,20 +22,24 @@
 		<script type="text/javascript" src="js/app.js"></script>
 
 		<script type="text/javascript">
-		    //app.load(['js/index.js']);
-            app.render('IndexPage')
+			//app.load(['js/index.js']);
+			app.render('IndexPage')
 		</script>
+		<header>
+			<h1>Babelbay</h1>
+		</header>
 		
+        <section id="contents">
 
-		<ul id="levels">
-			<li>
-				<a class="container" href="level.html">
-					<span class="name"></span>
-				</a>
-			</li>
-		</ul>
+	        <ul id="levels">
+			    <li>
+				    <a class="container" href="level.html">
+					    <span class="name"></span>
+				    </a>
+			    </li>
+		    </ul>
 
-		<div id="runs"></div>
+		</section>
 		
 	</body>
 </html>

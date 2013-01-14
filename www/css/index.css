@@ -57,6 +57,24 @@ body.loaded {
   animation: fade 3000ms infinite;
   -webkit-animation: fade 3000ms infinite;
 }
+header {
+  height: 50px;
+  position: relative;
+  background-color: black;
+  color: white;
+  display: table;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+header h1 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 20px;
+  vertical-align: middle;
+  display: table-cell;
+  width: 100%;
+}
 #levels {
   margin: 0;
   padding: 0;

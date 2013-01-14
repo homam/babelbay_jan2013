@@ -1,4 +1,3 @@
-/// <reference path="jquery-1.8.d.ts" />
 (function (window) {
     var getBestEvent = function (events) {
         for(var i = 0; i < events.length; i++) {

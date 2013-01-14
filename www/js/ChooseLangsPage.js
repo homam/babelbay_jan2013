@@ -3,10 +3,6 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/// <reference path="lib/jquery-1.8.d.ts" />
-/// <reference path="lib/storage/storage.ts" />
-/// <reference path="Page.ts" />
-/// <reference path="app.ts" />
 var PG;
 (function (PG) {
     var ChooseLangsPage = (function (_super) {
@@ -31,10 +27,13 @@ var PG;
                     'pl'
                 ].forEach(function (lang) {
                     var li = template.clone();
-                    li.find("a").text(lang).attr("href", "javascript:chooseNativeLang('" + lang + "')");
+                    var a = li.find("a").text(lang).attr("data-lang", lang).attr("href", "#here");
                     ul.append(li);
                 });
                 $("body").attr("data-state", 'chooseNativeLang');
+                ul.find("a").bind("click", function () {
+                    chooseNativeLang($(this).attr("data-lang"));
+                });
                 return $.Deferred().resolve();
             };
         }
@@ -59,8 +58,11 @@ var switchView_chooseTargetLang = function (selectedNativeLangCode) {
         return selectedNativeLangCode != lang;
     }).forEach(function (lang) {
         var li = template.clone();
-        li.find("a").text(lang).attr("href", "javascript:chooseTargetLangs('" + lang + "')");
+        li.find("a").text(lang).attr("data-lang", lang).attr("href", "#here");
         ul.append(li);
+    });
+    ul.find("a").bind("click", function () {
+        chooseTargetLangs($(this).attr("data-lang"));
     });
 };
 var chooseNativeLang = function (langCode) {

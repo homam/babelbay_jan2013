@@ -1,4 +1,3 @@
-/// <reference path="lib/jquery-1.8.d.ts" />
 var PG;
 (function (PG) {
     var Page = (function () {

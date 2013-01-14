@@ -3,10 +3,6 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/// <reference path="lib/jquery-1.8.d.ts" />
-/// <reference path="lib/storage/storage.ts" />
-/// <reference path="Page.ts" />
-/// <reference path="app.ts" />
 var PG;
 (function (PG) {
     var IndexPage = (function (_super) {
@@ -17,7 +13,6 @@ var PG;
             this._render = function () {
                 var renderLevels = function (levelsStr) {
                     var levels = JSON.parse(levelsStr);
-                    $("h1").html(levels[0].name);
                     var ul = $("#levels");
                     var template = ul.find("li").remove();
                     levels.forEach(function (level) {

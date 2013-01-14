@@ -57,6 +57,27 @@ body.loaded {
   animation: fade 3000ms infinite;
   -webkit-animation: fade 3000ms infinite;
 }
+header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 40px;
+  background-color: black;
+  color: white;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+}
+header h1 {
+  margin: 0;
+  padding: 1ex 0 1ex 0;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+#contents {
+  margin-top: 40px;
+}
 body {
   overflow-x: hidden;
 }
@@ -80,6 +101,9 @@ h1 {
   background-color: blue;
   color: white;
   text-decoration: none;
+}
+body.bookmarked #flashCardsNav a.toggleBookmark {
+  color: yellow;
 }
 #steps {
   display: block;

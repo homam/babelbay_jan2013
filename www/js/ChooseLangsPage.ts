@@ -14,11 +14,15 @@ module PG {
 
             ['en', 'es', 'ar', 'fr', 'de', 'th', 'az', 'tr', 'pl'].forEach(lang => {
                 var li = template.clone();
-                li.find("a").text(lang).attr("href", "javascript:chooseNativeLang('" + lang + "')");
+                var a = li.find("a").text(lang).attr("data-lang", lang).attr("href","#here");//.attr("href", "javascript:chooseNativeLang('" + lang + "')");
                 ul.append(li);
             });
 
             $("body").attr("data-state", 'chooseNativeLang');
+
+            ul.find("a").bind("click", function () {
+                chooseNativeLang($(this).attr("data-lang"));
+            });
 
             return $.Deferred().resolve();
         }
@@ -38,8 +42,12 @@ var switchView_chooseTargetLang = function(selectedNativeLangCode:string) {
 
     ['en', 'es', 'ar', 'fr', 'de', 'ru'].filter(lang => selectedNativeLangCode != lang).forEach(lang => {
         var li = template.clone();
-        li.find("a").text(lang).attr("href", "javascript:chooseTargetLangs('" + lang + "')");
+        li.find("a").text(lang).attr("data-lang", lang).attr("href","#here");//.attr("href", "javascript:chooseTargetLangs('" + lang + "')");
         ul.append(li);
+    });
+
+    ul.find("a").bind("click", function () {
+        chooseTargetLangs($(this).attr("data-lang"));
     });
 }
 
